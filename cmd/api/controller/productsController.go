@@ -14,6 +14,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func New(w http.ResponseWriter, r *http.Request) {
-	//allProducts := service.SelectAllProductsDb()
 	templateHtml.ExecuteTemplate(w, "New", nil)
+}
+
+func Insert(w http.ResponseWriter, r *http.Request) {
+	service.CreateProduct(w, r)
 }

@@ -8,5 +8,6 @@ import (
 func Start() {
 	routs.GetroutHome()
 	routs.GetroutNewProduct()
+	routs.PostProduct()
 	http.ListenAndServe(":8080", nil)
 }

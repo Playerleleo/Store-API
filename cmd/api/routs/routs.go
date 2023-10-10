@@ -12,3 +12,7 @@ func GetroutHome() {
 func GetroutNewProduct() {
 	http.HandleFunc("/new", controller.New)
 }
+
+func PostProduct() {
+	http.HandleFunc("/insert", controller.Insert)
+}
