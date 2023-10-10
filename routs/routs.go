@@ -5,6 +5,10 @@ import (
 	"net/http"
 )
 
-func Getrouts() {
+func GetroutHome() {
 	http.HandleFunc("/", controller.Index)
+}
+
+func GetroutNewProduct() {
+	http.HandleFunc("/new", controller.New)
 }

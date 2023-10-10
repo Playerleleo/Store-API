@@ -12,3 +12,8 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	allProducts := service.SelectAllProductsDb()
 	templateHtml.ExecuteTemplate(w, "Index", allProducts)
 }
+
+func New(w http.ResponseWriter, r *http.Request) {
+	//allProducts := service.SelectAllProductsDb()
+	templateHtml.ExecuteTemplate(w, "New", nil)
+}

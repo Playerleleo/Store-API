@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
-	routs.Getrouts()
+	routs.GetroutHome()
+	routs.GetroutNewProduct()
 	http.ListenAndServe(":8080", nil)
 }
