@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func AppRun() {
+func Start() {
 	routs.GetroutHome()
 	routs.GetroutNewProduct()
 	http.ListenAndServe(":8080", nil)
