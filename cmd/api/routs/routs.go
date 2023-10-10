@@ -1,7 +1,7 @@
 package routs
 
 import (
-	"github.com/Store-API/controller"
+	"github.com/Store-API/cmd/api/controller"
 	"net/http"
 )
 

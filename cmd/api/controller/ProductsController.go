@@ -1,12 +1,12 @@
 package controller
 
 import (
-	"github.com/Store-API/service"
+	"github.com/Store-API/cmd/api/service"
 	"html/template"
 	"net/http"
 )
 
-var templateHtml = template.Must(template.ParseGlob("front/*.html"))
+var templateHtml = template.Must(template.ParseGlob("cmd/api/front/*.html"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	allProducts := service.SelectAllProductsDb()

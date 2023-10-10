@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/Store-API/dao"
-	"github.com/Store-API/model"
+	"github.com/Store-API/cmd/api/dao"
+	"github.com/Store-API/cmd/api/model"
 	_ "github.com/go-sql-driver/mysql"
 )
 

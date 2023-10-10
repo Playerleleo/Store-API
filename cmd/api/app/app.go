@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/Store-API/routs"
+	"github.com/Store-API/cmd/api/routs"
 	"net/http"
 )
 
