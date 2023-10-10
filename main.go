@@ -1,13 +1,10 @@
 package main
 
 import (
-	"github.com/Store-API/routs"
+	"github.com/Store-API/app"
 	_ "github.com/go-sql-driver/mysql"
-	"net/http"
 )
 
 func main() {
-	routs.GetroutHome()
-	routs.GetroutNewProduct()
-	http.ListenAndServe(":8080", nil)
+	app.AppRun()
 }
