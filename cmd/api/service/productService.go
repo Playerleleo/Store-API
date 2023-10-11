@@ -85,3 +85,69 @@ func Delete(id string) {
 	deleteProduct.Exec(id)
 	defer db.Close()
 }
+
+func EditProduct(id string) model.Product {
+	db := dao.ConectionDatabase()
+
+	productDb, err := db.Query("SELECT * FROM products where id=?", id)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	productToUpdate := model.Product{}
+
+	for productDb.Next() {
+		var id, quantity int
+		var name, description string
+		var price float64
+
+		err = productDb.Scan(&id, &name, &description, &price, &quantity)
+		if err != nil {
+			panic(err.Error())
+		}
+		productToUpdate.Id = id
+		productToUpdate.Name = name
+		productToUpdate.Description = description
+		productToUpdate.Price = price
+		productToUpdate.Quantity = quantity
+	}
+	defer db.Close()
+	return productToUpdate
+}
+func UpdateProduct(id int, name, description string, price float64, quantity int) {
+	db := dao.ConectionDatabase()
+	update, err := db.Prepare("UPDATE products SET name=?, description=?, price=?, quantity=? WHERE id=?")
+	if err != nil {
+		panic(err.Error())
+	}
+	update.Exec(name, description, price, quantity, id)
+	defer db.Close()
+}
+
+func Update(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		id := r.FormValue("id")
+		name := r.FormValue("name")
+		description := r.FormValue("description")
+		price := r.FormValue("price")
+		quantity := r.FormValue("quantity")
+
+		priceConvertedToFloat, err := strconv.ParseFloat(price, 64)
+		if err != nil {
+			log.Println("Error in price conversion:", err)
+		}
+
+		quantityConvertedToInt, err := strconv.Atoi(quantity)
+		if err != nil {
+			log.Println("Error in quantity conversion:", err)
+		}
+
+		idConvertedToInt, err := strconv.Atoi(id)
+		if err != nil {
+			log.Println("Error in id conversion:", err)
+		}
+
+		UpdateProduct(idConvertedToInt, name, description, priceConvertedToFloat, quantityConvertedToInt)
+	}
+	http.Redirect(w, r, "/", 301)
+}

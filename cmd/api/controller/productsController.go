@@ -26,3 +26,13 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	service.Delete(getId)
 	http.Redirect(w, r, "/", 301)
 }
+
+func Edit(w http.ResponseWriter, r *http.Request) {
+	getId := r.URL.Query().Get("id")
+	product := service.EditProduct(getId)
+	templateHtml.ExecuteTemplate(w, "Edit", product)
+}
+
+func Update(w http.ResponseWriter, r *http.Request) {
+	service.Update(w, r)
+}

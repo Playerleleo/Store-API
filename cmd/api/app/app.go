@@ -10,5 +10,7 @@ func Start() {
 	routs.GetroutNewProduct()
 	routs.PostProduct()
 	routs.DeleteProduct()
+	routs.Edit()
+	routs.Update()
 	http.ListenAndServe(":8080", nil)
 }

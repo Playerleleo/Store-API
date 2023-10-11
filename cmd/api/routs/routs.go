@@ -20,3 +20,11 @@ func PostProduct() {
 func DeleteProduct() {
 	http.HandleFunc("/delete", controller.Delete)
 }
+
+func Edit() {
+	http.HandleFunc("/edit", controller.Edit)
+}
+
+func Update() {
+	http.HandleFunc("/update", controller.Update)
+}
