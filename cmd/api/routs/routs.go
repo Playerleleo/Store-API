@@ -16,3 +16,7 @@ func GetroutNewProduct() {
 func PostProduct() {
 	http.HandleFunc("/insert", controller.Insert)
 }
+
+func DeleteProduct() {
+	http.HandleFunc("/delete", controller.Delete)
+}

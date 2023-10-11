@@ -75,3 +75,13 @@ func CreateProduct(w http.ResponseWriter, r *http.Request) {
 	}
 	http.Redirect(w, r, "/", 301)
 }
+
+func Delete(id string) {
+	db := dao.ConectionDatabase()
+	deleteProduct, err := db.Prepare("DELETE FROM products WHERE id=?")
+	if err != nil {
+		panic(err.Error())
+	}
+	deleteProduct.Exec(id)
+	defer db.Close()
+}

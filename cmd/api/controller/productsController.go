@@ -20,3 +20,9 @@ func New(w http.ResponseWriter, r *http.Request) {
 func Insert(w http.ResponseWriter, r *http.Request) {
 	service.CreateProduct(w, r)
 }
+
+func Delete(w http.ResponseWriter, r *http.Request) {
+	getId := r.URL.Query().Get("id")
+	service.Delete(getId)
+	http.Redirect(w, r, "/", 301)
+}
